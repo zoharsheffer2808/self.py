@@ -17,7 +17,11 @@ def try_update_letter_guessed(letter_guessed, old_letters_guessed):
        return False 
 
 def show_hidden_word(secret_word, old_letters_guessed):
-
+     for letter in word:
+        if letter in old_letters_guessed:
+             print(f"{letter} ")
+        else 
+              print ("_ ")
 
 
 def main():
