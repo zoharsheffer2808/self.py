@@ -1,10 +1,27 @@
+def check_valid_input(letter_guessed, old_letters_guessed):
+  if len(letter_guessed) > 1 or not letter_guessed.isalpha(): 
+      return False
+  if letter_guessed.upper() in old_letters_guessed or letter_guessed.lower() in old_letters_guessed:
+    return False
+  return True
+
 def try_update_letter_guessed(letter_guessed, old_letters_guessed):
-    respone = check_valid_input(letter_guessed, old_letters_guessed)
+    response = check_valid_input(letter_guessed, old_letters_guessed)
     if response:
        old_letters_guessed.append(letter_guessed)
        return True
     else:
        old_letters_guessed.sort()
-	   arrows_string = ' -> '.join(old_letters_guessed)
-       print(f"X\n {arrows_string})" 
+       arrows_string = ' -> '.join(old_letters_guessed)
+       print(f"X\n{arrows_string}") 
        return False 
+
+def main():
+    # Call the function try_update_letter_guessed
+    old_letters_guessed = []
+    User_Guess = input ("Guess a letter:")
+    is_succseed = try_update_letter_guessed(User_Guess, old_letters_guessed)
+    print(is_succseed)
+
+if __name__ == "__main__":
+    main()
