@@ -1,1 +1,14 @@
 def check_valid_input(letter_guessed, old_letters_guessed):
+  if len(User_Guess) > 1 or not User_Guess.isalpha(): 
+      return False
+  if letter_guessed.upper() in old_letters_guessed or letter_guessed.lower() in old_letters_guessed:
+    return False
+  return True
+
+def main():
+	# Call the function is_valid_input
+    User_Guess = input ("Guess a letter:")
+    is_valid_input(User_Guess)
+
+if __name__ == "__main__":
+    main()
