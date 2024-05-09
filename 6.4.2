@@ -16,12 +16,17 @@ def try_update_letter_guessed(letter_guessed, old_letters_guessed):
        print(f"X\n{arrows_string}") 
        return False 
 
+def show_hidden_word(secret_word, old_letters_guessed):
+
+
+
 def main():
     # Call the function try_update_letter_guessed
     old_letters_guessed = []
     User_Guess = input ("Guess a letter:")
-    is_succseed = try_update_letter_guessed(User_Guess, old_letters_guessed)
-    print(is_succseed)
+    is_succeeded = try_update_letter_guessed(User_Guess, old_letters_guessed)
+    if is_succeeded:
+        show_hidden_word(secret_word, old_letters_guessed)
 
 if __name__ == "__main__":
     main()
