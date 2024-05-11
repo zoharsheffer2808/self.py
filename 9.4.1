@@ -1,20 +1,27 @@
 def choose_word(file_path, index):
     with open(file_path, "r") as R_file:
-        content = str(R_file.read())
-     count = 0
-     words_list = []
-     for word in content:
-         if word not in words_list:
-             words_list.append(word)
-             count++
-         if index == 1:
-             break
-         index--
-     return (count, word)
+        content = str(R_file.read())   
+    content_list = content.split()        
+    count,i = 0,0
+    words_list = []
+    one_circle = False 
+    while index >= 1 or not one_circle:
+        if i == len(content_list):
+            one_circle = True
+            i = 0
+        word = content_list[i] 
+        if word not in words_list and not one_circle:
+            words_list.append(word)
+            count+=1 
+        if index == 1:
+            founded_word = word            
+        index-=1
+        i+=1  
+    return (count, founded_word)
 
 
 def main():
-    choose_word(r"C:\Users\zohar\OneDrive\מסמכים\words.txt", 3)
+    print (choose_word(r"C:\Users\zohar\OneDrive\מסמכים\words.txt", 21))
 if __name__ == "__main__":
     main()
     
