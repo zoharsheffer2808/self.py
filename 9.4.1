@@ -1,0 +1,17 @@
+def choose_word(file_path, index):
+    with open(file_path, "r") as R_file:
+        content = str(R_file.read())
+     count = 0
+     words_list = []
+     for word in content:
+         if word not in words_list:
+             words_list.append(word)
+             count++
+         if index == 1:
+             break
+         index--
+     return (count, word)
+
+
+
+    "C:\Users\zohar\OneDrive\מסמכים\words.txt"
