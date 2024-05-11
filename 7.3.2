@@ -1,0 +1,5 @@
+def check_win(secret_word, old_letters_guessed):
+    for letter in secret_word:
+        if letter.upper() not in old_letters_guessed and letter.lower() not in old_letters_guessed:
+             return True
+     return False 
