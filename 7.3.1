@@ -1,1 +1,39 @@
 def show_hidden_word(secret_word, old_letters_guessed):
+def check_valid_input(letter_guessed, old_letters_guessed):
+  if len(letter_guessed) > 1 or not letter_guessed.isalpha(): 
+      return False
+  if letter_guessed.upper() in old_letters_guessed or letter_guessed.lower() in old_letters_guessed:
+    return False
+  return True
+
+def try_update_letter_guessed(letter_guessed, old_letters_guessed):
+    response = check_valid_input(letter_guessed, old_letters_guessed)
+    if response:
+       old_letters_guessed.append(letter_guessed)
+       return True
+    else:
+       old_letters_guessed.sort()
+       arrows_string = ' -> '.join(old_letters_guessed)
+       print(f"X\n{arrows_string}") 
+       return False 
+
+def show_hidden_word(secret_word, old_letters_guessed):
+     result = ""
+     for letter in word:
+        if letter in old_letters_guessed:
+             result += (letter+" ")
+        else 
+             result += "_ "
+     return result
+
+
+def main():
+    # Call the function try_update_letter_guessed
+    old_letters_guessed = []
+    User_Guess = input ("Guess a letter:")
+    is_succeeded = try_update_letter_guessed(User_Guess, old_letters_guessed)
+    if is_succeeded:
+        print(show_hidden_word(secret_word, old_letters_guessed))
+
+if __name__ == "__main__":
+    main()
