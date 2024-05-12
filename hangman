@@ -74,21 +74,26 @@ def choose_word(file_path, index):
     try:
         with open(file_path, "r") as file:
             content = file.read()
-            if not content:  # בדיקה האם התוכן ריק
+            # check if content is empty 
+            if not content: 
                 print("could'nt read content, try again")
                 return None
     except FileNotFoundError:
         print("File not found, please provide a valid file path.")
         return None 
-    content_list = content.split()        
+    content_list = content.split()   
+    # count for counting the different words in file 
     count,i = 0,0
     words_list = []
     one_circle = False 
+    # pass words until index is found 
     while index >= 1 or not one_circle:
+        # if all words passed go back to start 
         if i == len(content_list):
             one_circle = True
             i = 0
         word = content_list[i] 
+        # count the words for the first time only 
         if word not in words_list and not one_circle:
             words_list.append(word)
             count+=1 
